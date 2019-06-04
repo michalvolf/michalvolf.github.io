@@ -130,6 +130,9 @@ function addMinesCounter(mineX, mineY, field) {
  * Lastly it ends game when all plots without mines are revealed
  */
 function revealMine(e) {
+    if(Event.prototype.composedPath == undefined) {
+        Event.prototype.composedPath = eventPath;
+    }
     let mineY = e.composedPath()[1].id.substring(3,5);
     let mineX = e.composedPath()[0].id.substring(4,6);
     if(field==null) {
@@ -555,6 +558,37 @@ document.getElementById("inputHeigth").addEventListener("focus", resetInput);
 document.getElementById("inputMines").addEventListener("focus", resetInput);
 document.getElementById("mutedCheckbox").addEventListener("change", changeMuted);
 window.addEventListener("mouseup", smileyfaceOnNormal);
+
+function eventPath(evt) {
+    var path = (evt.composedPath && evt.composedPath()) || evt.path,
+        target = evt.target;
+
+    if (path != null) {
+        // Safari doesn't include Window, and it should.
+        path = (path.indexOf(window) < 0) ? path.concat([window]) : path;
+        return path;
+    }
+
+    if (target === window) {
+        return [window];
+    }
+
+    function getParents(node, memo) {
+        memo = memo || [];
+        var parentNode = node.parentNode;
+
+        if (!parentNode) {
+            return memo;
+        }
+        else {
+            return getParents(parentNode, memo.concat([parentNode]));
+        }
+    }
+
+    return [target]
+        .concat(getParents(target))
+        .concat([window]);
+}
 
 
 /*
