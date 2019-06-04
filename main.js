@@ -130,11 +130,15 @@ function addMinesCounter(mineX, mineY, field) {
  * Lastly it ends game when all plots without mines are revealed
  */
 function revealMine(e) {
+    let mineX;
+    let mineY;
     if(Event.prototype.composedPath == undefined) {
-        Event.prototype.composedPath = eventPath;
+        mineY = eventPath(e)[1].id.substring(3,5);
+        mineX = eventPath(e)[0].id.substring(4,6);
+    } else {
+        mineY = e.composedPath()[1].id.substring(3,5);
+        mineX = e.composedPath()[0].id.substring(4,6);
     }
-    let mineY = e.composedPath()[1].id.substring(3,5);
-    let mineX = e.composedPath()[0].id.substring(4,6);
     if(field==null) {
         field = generateMines(currentSettings, mineX, mineY);
     }
