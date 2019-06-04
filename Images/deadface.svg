@@ -1,0 +1,8 @@
+<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle cx="23" cy="23" r="20" stroke="black" stroke-width="2" fill="yellow" />
+    <line x1="12" y1="12" x2="20" y2="20" style="stroke:rgb(0,0,0);stroke-width:2" />
+    <line x1="34" y1="12" x2="26" y2="20" style="stroke:rgb(0,0,0);stroke-width:2" />
+    <line x1="34" y1="20" x2="26" y2="12" style="stroke:rgb(0,0,0);stroke-width:2" />
+    <line x1="12" y1="20" x2="20" y2="12" style="stroke:rgb(0,0,0);stroke-width:2" />
+    <path d="M12 32 C 23 23, 23 23, 34 32" stroke="black" stroke-width="2" fill="transparent" />
+</svg>

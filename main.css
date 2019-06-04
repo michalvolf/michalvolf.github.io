@@ -1,0 +1,271 @@
+body {
+    margin: 0px;    
+}
+
+#minesLeft {
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 30px;
+}
+
+#timer {
+    margin: 0px;
+    margin-top: 15px;
+    margin-right: 5px;
+    width: 30px;
+    text-align: right;
+}
+
+#minefield .markedMine {
+    background: blue;
+    border-color: lightblue;
+    background-image: url("Images/flag.svg");
+}
+
+#minefield .revealedBlank {
+    background: lightgrey;
+    border-color: grey;
+    
+}
+
+#minefield .revealedMine {
+    background: red;
+    border-color: lightcoral;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-image: url("Images/mine.svg");
+}
+
+#minefield .wrongMark {
+    background: blue;
+    border-color: lightblue;
+    background-image: url("Images/wrongFlag.svg");
+}
+
+#minefield button {
+    background: grey;
+    height: 20px;
+    width: 20px;
+    border-width: 1px;
+    border-color: darkgrey;
+    padding: 0px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+#minefield button:focus {
+    outline: none;
+}
+
+#minefield button:disabled {
+    color: black;
+}
+
+#minefield ul {
+    margin: 0px;
+    padding: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+#startNewGame {
+    width: 50px;
+    height: 50px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border-style: solid;
+    border-width: 2px;
+    padding: 0px;
+}
+
+.smileyNormal {
+    background-image: url("Images/smileyface.svg");
+}
+
+.smileyHold {
+    background-image: url("Images/surprisedface.svg");
+}
+
+.smileyOver {
+    background-image: url("Images/deadface.svg");
+}
+
+#startNewGame:focus {
+    outline: 0;
+}
+
+#gameInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border-style: solid;
+    border-width: 0px;
+    border-bottom-width: 2px;
+}
+
+#game {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    background: whitesmoke;
+    border-style: solid;
+    border-width: 2px;
+}
+
+#customSettings input {
+    width: 40px;
+}
+
+#menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background: lightblue;
+    width: 100%;
+}
+
+#settingsButton {
+    margin-right: 50px;
+}
+
+#settings {
+    display: block;
+    position: fixed;
+    top: -400px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-style: solid;
+    border-width: 2px;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.settingsModal #settings {
+    display: block;
+    position: absolute;
+    top: 20px;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#customSettings {
+    display: block;
+    margin-top: 5px;
+}
+
+#customSettingsHidden {
+    display: none;
+}
+
+#highscoreWrap {
+    display: block;
+    position: fixed;
+    top: -400px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-style: solid;
+    border-width: 2px;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.highscoreModal #highscoreWrap {
+    display: block;
+    position: absolute;
+    top: 20px;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#endGameHidden {
+    display: block;
+    visibility: hidden;
+    position: fixed;
+    left: 40%;
+    top: 20%;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: none;
+    color: rgba(255, 255, 255, 0);
+}
+
+#endGame {
+    display: block;
+    visibility: visible;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    top: 20%;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-style: solid;
+    border-width: 2px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -webkit-transition: background-color 1s, color 1s, border-style 1s;
+    -o-transition: background-color 1s, color 1s, border-style 1s;
+    transition: background-color 1s, color 1s, border-style 1s;
+}
+
+.wrongInput {
+    border-style: solid;
+    border-color: red;
+    border-width: 1px;
+}
+
+#minesLeftWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+#timerWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    #game {
+        left: 0%;
+        -webkit-transform: translate(0%);
+            -ms-transform: translate(0%);
+                transform: translate(0%);
+    }
+}
