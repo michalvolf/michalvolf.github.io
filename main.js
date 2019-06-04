@@ -599,7 +599,6 @@ function eventPath(evt) {
 TODO:
     Fix disabled tlačítek
     Upravit kód a stylování
-    Funkcionalita v EDGE?
 */
 
 })();
