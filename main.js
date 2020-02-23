@@ -143,14 +143,17 @@ function revealMine(e) {
         field = generateMines(currentSettings, mineX, mineY);
     }
     let gameButton = e.target;
-    if (gameButton.className != "markedMine") {
+    if (gameButton.className != "markedMine" && gameButton.className != "revealedBlank") {
         if(field[mineY][mineX]=="x") {
             gameButton.setAttribute("class", "revealedMine");
             endGameLost(e);
         } else {
             gameButton.innerHTML = field[mineY][mineX];
             gameButton.setAttribute("class", "revealedBlank");
-            gameButton.setAttribute("disabled", true);
+            gameButton.removeEventListener("click", revealMine);
+            gameButton.removeEventListener("contextmenu", markMine);
+            gameButton.addEventListener("click", revealMany);
+            gameButton.addEventListener("contextmenu", e => e.preventDefault());
             if(gameButton.innerHTML=="0") {
                 setTimeout(() => {
                     revealAdjacent(mineX,mineY);    
@@ -162,6 +165,22 @@ function revealMine(e) {
             }
         }
     }
+}
+
+/**
+ * Reveals all adjacent sqares of a clicked one 
+ */
+function revealMany(e) {
+    let mineX;
+    let mineY;
+    if(Event.prototype.composedPath == undefined) {
+        mineY = eventPath(e)[1].id.substring(3,5);
+        mineX = eventPath(e)[0].id.substring(4,6);
+    } else {
+        mineY = e.composedPath()[1].id.substring(3,5);
+        mineX = e.composedPath()[0].id.substring(4,6);
+    }
+    revealAdjacent(mineX, mineY);
 }
 
 /**
@@ -192,30 +211,40 @@ function revealAdjacent(x, y) {
     y = Number.parseInt(y);
     let firstUl = Array.from(document.getElementById("row" + y).childNodes);
     if(x!=0) {
-        firstUl[x-1].click();
+        safeClick(firstUl[x-1]);
     }
     if(x!=currentSettings.width-1) {
-        firstUl[x+1].click();
+        safeClick(firstUl[x+1]);
     }
     if(y!=0) {
         let secondUl = Array.from(document.getElementById("row" + (y-1)).childNodes);
         if(x!=0) {
-            secondUl[x-1].click();
+            safeClick(secondUl[x-1]);
         }
-        secondUl[x].click();
+        safeClick(secondUl[x]);
         if(x!=currentSettings.width-1) {
-            secondUl[x+1].click();
+            safeClick(secondUl[x+1]);
         }
     }
     if(y!=currentSettings.height-1) {
         let thirdUl = Array.from(document.getElementById("row" + (y+1)).childNodes);
         if(x!=0) {
-            thirdUl[x-1].click();
+            safeClick(thirdUl[x-1]);
         }
-        thirdUl[x].click();
+        safeClick(thirdUl[x]);
         if(x!=currentSettings.width-1) {
-            thirdUl[x+1].click();
+            safeClick(thirdUl[x+1]);
         }
+    }
+}
+
+/**
+ * Clicks the target node only if it is not a flag or revealed
+ * Used for revealing multiple sqares
+ */
+function safeClick(node) {
+    if (node.className != "markedMine" && node.className != "revealedBlank") {
+        node.click();
     }
 }
 
@@ -599,7 +628,6 @@ function eventPath(evt) {
 TODO:
     Fix disabled tlačítek
     Upravit kód a stylování
-    Funkcionalita v EDGE?
 */
 
 })();
